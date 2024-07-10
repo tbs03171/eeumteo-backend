@@ -33,4 +33,12 @@ public class Account extends BaseEntity {
 
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
     private List<FavoriteEducation> favoriteEducations = new ArrayList<>();
+
+    @Builder
+    public Account(String email, String password, Role role, Profile profile) {
+        this.email = email;
+        this.password = password;
+        this.role = role;
+        this.profile = profile;
+    }
 }
