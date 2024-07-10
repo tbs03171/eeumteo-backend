@@ -2,6 +2,7 @@ package com.eeumteo.eeumteo_backend.account.entity;
 
 import com.eeumteo.eeumteo_backend.base.BaseEntity;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -16,9 +17,17 @@ public class Profile extends BaseEntity {
     @Column(name = "profile_id")
     private Long id;
 
+    private String name;
+
     @Enumerated(value = EnumType.STRING)
     private Gender gender;
 
-    private String name;
-    private LocalDate birthday;
+    private LocalDate birthdate;
+
+    @Builder
+    public Profile(String name, Gender gender, LocalDate birthdate) {
+        this.name = name;
+        this.gender = gender;
+        this.birthdate = birthdate;
+    }
 }
