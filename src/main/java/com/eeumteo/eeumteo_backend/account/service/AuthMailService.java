@@ -29,6 +29,8 @@ public class AuthMailService {
 
     private final RedisService redisService;
 
+    private final JavaMailSender emailSender;
+
     @Value("${spring.mail.auth-code-expiration-millis}")
     private long authCodeExpirationMillis;
 
@@ -66,9 +68,10 @@ public class AuthMailService {
 
         return authResult;
     }
-    private final JavaMailSender emailSender;
 
-    // 메일 발송
+    /**
+     * 메일 발송
+     */
     public void sendEmail(String toEmail,
                           String title,
                           String text) {
